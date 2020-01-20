@@ -5,7 +5,7 @@ const StyledWrapper = styled.div`
     border-radius: 8px ;
     width: 200px ;
     padding : 10px ;
-    margin : 2px;
+    margin : px;
 
     ${props => props.islogin && `
     border:1px solid rgba(255,0,0,1);
@@ -23,7 +23,6 @@ const User = props => {
     return (
         <StyledWrapper islogin = {props.islogin}>
             <div>
-
                 <img src={imageUrl} width= '50%' height= '50%' />
                 <p> {firsname} </p>
                 <p>{lastname}</p>

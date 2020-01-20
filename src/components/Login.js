@@ -5,7 +5,8 @@ const StyledWrapper = styled.div`
 
 border:1px solid rgba(0,0,0,1);
 border-radius: 8px ;
-width: 200px ;
+width: 300px ;
+margin : 30px;
 padding : 10px ;
 h1{
     display: flex
@@ -19,13 +20,17 @@ h1{
 
 
 const Button = styled.button`
-
   border-radius: 8px;
-  color: black;
+  border: 2px solid #00ff11;
+  height: 45px;
+  width: 150px;
+  font-size: 18px;
+  color: #fff;
   background-color : #00ff11;
   cursor: pointer;
   &:hover{
-      background-color:rgba(0,0,0,.15)
+      color: #00ff11;
+      background-color: #fff;
   }
 `
 

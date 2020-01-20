@@ -5,7 +5,8 @@ import Login from './Login'
 const StyledWrapper = styled.div`
     border:1px solid rgba(0,0,0,1);
     border-radius: 8px ;
-    width: 200px ;
+    width: 300px ;
+    margin : 30px;
     padding : 10px ;
     .contener{
         h1,h4{
@@ -71,6 +72,7 @@ const Register = props => {
                 <h1>Register</h1>
                 <p>First Name</p>   <input type="text" placeholder="Your firsname" onChange ={e => setfirsname(e.target.value)}></input>
                 <p>Last Name</p>    <input type="text" placeholder="Your lastname" onChange ={e => setlastname(e.target.value)}></input>
+                <p></p>
                 <p>E-mail</p>       <input type="text" placeholder="Your e-mail" onChange ={e => setemail(e.target.value)}></input>
                 <p>Password</p>     <input type="password" placeholder="Your password" onChange ={e => setpass(e.target.value)}></input>
                 <p>เลือกรูป<input type="file" id="myFile" accept="image/*" onChange ={ handlechargefile} ></input></p>
