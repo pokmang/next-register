@@ -20,13 +20,17 @@ const StyledWrapper = styled.div`
 
 `
 const Button = styled.button`
-
   border-radius: 8px;
-  color: black;
+  border: 2px solid #00ff11;
+  height: 45px;
+  width: 150px;
+  font-size: 18px;
+  color: #fff;
   background-color : #00ff11;
   cursor: pointer;
   &:hover{
-      background-color:rgba(0,0,0,.15)
+      color: #00ff11;
+      background-color: #fff;
   }
 `
 
