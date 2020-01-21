@@ -23,7 +23,7 @@ const Button = styled.button`
   border-radius: 8px;
   border: 2px solid #00ff11;
   height: 45px;
-  width: 150px;
+  width: 110px;
   margin : 13px;
   font-size: 18px;
   color: #fff;
@@ -54,7 +54,7 @@ const Login = props => {
             <h1>log in</h1>
 
             <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail3">User name</label>
+                <label className="sr-only" for="exampleInputEmail3">User name</label>
                 <input type="email" class="form-control" id="exampleInputEmail3" placeholder="User name" onChange={(e) => setfirsname(e.target.value)}></input>
             </div>
 
