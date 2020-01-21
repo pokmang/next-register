@@ -43,24 +43,36 @@ const Login = props => {
     const [pass, setpass] = useState('');
 
 
-    const logins = () =>{
+    const logins = () => {
 
-        props.logins({firsname,pass}) ;
+        props.logins({ firsname, pass });
     }
 
     return (
         <StyledWrapper>
 
             <h1>log in</h1>
-            <p>Username</p>
-            <input type="text" onChange={(e) => setfirsname(e.target.value)}></input>
-            <p>Password</p>
-            <input type="password" onChange={(e) => setpass(e.target.value)}></input>
 
-            <p><Button onClick = {logins} >login</Button></p>
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail3">User name</label>
+                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="User name" onChange={(e) => setfirsname(e.target.value)}></input>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail3">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password"  onChange={(e) => setpass(e.target.value)}></input>
+            </div>
+            
+
+            
+
+
+
+            <p><Button onClick={logins} >login</Button></p>
 
 
         </StyledWrapper>
+
 
 
 
