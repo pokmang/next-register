@@ -24,6 +24,7 @@ const Button = styled.button`
   border: 2px solid #00ff11;
   height: 45px;
   width: 150px;
+  margin : 13px;
   font-size: 18px;
   color: #fff;
   background-color : #00ff11;
@@ -31,6 +32,7 @@ const Button = styled.button`
   &:hover{
       color: #00ff11;
       background-color: #fff;
+      
   }
 `
 

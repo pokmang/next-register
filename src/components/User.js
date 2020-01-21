@@ -5,7 +5,7 @@ const StyledWrapper = styled.div`
     border-radius: 8px ;
     width: 200px ;
     padding : 10px ;
-    margin : px;
+    margin : 15px;
 
     ${props => props.islogin && `
     border:1px solid rgba(255,0,0,1);
