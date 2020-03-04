@@ -1,34 +1,45 @@
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const StyledWrapper = styled.div`
-    border:1px solid rgba(0,0,0,1);
-    border-radius: 8px ;
-    width: 200px ;
-    padding : 10px ;
-    margin : 15px;
+
 
     ${props => props.islogin && `
     border:1px solid rgba(255,0,0,1);
     `}
+   
+         
+    .user{
+        border:1px solid rgba(0,0,0,1);
+        border-radius: 8px ;
+        width: 200px ;
+        padding : 10px ;
+        margin : 15px;
+    }
     
    
 
 `
 
-const User = props => {
+const Users = (props) => {
 
-    const { imageUrl, firsname, lastname, email } = props.username;
-    console.log(props.islogin)
+    const { users } = props;
+    console.log(props)
 
     return (
         <StyledWrapper islogin = {props.islogin}>
-            <div>
-                <img src={imageUrl} width= '50%' height= '50%' />
-                <p> {firsname} </p>
-                <p>{lastname}</p>
-                <p>{email}</p>
-                
-            </div>
+            {
+                users.map((user, index) => (
+                    <div className='user'>
+                    <img src={user.imageUrl} width= '50%' height= '50%' />
+                    <p> {user.firsname} </p>
+                    <p>{user.lastname}</p>
+                    <p>{user.email}</p>
+                    
+                </div>
+                ))
+            }
+           
 
 
         </StyledWrapper>
@@ -41,4 +52,4 @@ const User = props => {
 
 }
 
-export default User;
+export default connect(state=>state.User)(Users);

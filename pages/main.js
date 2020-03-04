@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Router from 'next/router' ;
-
+import Tapbar from '../src/components/Tapbar';
+   
 export default () => (
     <div>
-        <p>pokmang 123</p>
-        <button onClick={()=> {Router.push('/') }}>go home</button>
+        <Tapbar />
 
     </div>
 );
