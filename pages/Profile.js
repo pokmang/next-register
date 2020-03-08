@@ -1,4 +1,5 @@
 import Tapbar from "../src/components/Tapbar"
+import User from '../src/components/User';
 
 
 
@@ -7,8 +8,9 @@ const Profile =() =>{
      
              <div>
                  <Tapbar/>
+                 <User  />
                     
-                 ข้อมูล
+                 
              </div>
 
     )

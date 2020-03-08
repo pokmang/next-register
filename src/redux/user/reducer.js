@@ -1,17 +1,10 @@
 const userinfo = [
     {
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlZdpbK9Vj39UQbfibrytDSsEKyleVDDF3AG2vELVt7lcSImgo',
-    firstname: 'mang',
-    lastname: 'sulong',
-    email: 'usman@gmail.com'
-    },
-    {
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlZdpbK9Vj39UQbfibrytDSsEKyleVDDF3AG2vELVt7lcSImgo',
-        firstname: '1',
-        lastname: '1',
-        email: '1',
-        password : '1'
-        },
+    firstname: 'root',
+    lastname: 'root',
+    email: 'root@gmail.com'
+    }
  ]
 
 

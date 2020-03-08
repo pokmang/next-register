@@ -12,23 +12,8 @@ const StyledWrapper = styled.div `
 
 .btn{
     cursor: pointer;
-}
-.line{
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
- 
 
 }
-
-.under{
-    display: flex;
-    padding : 20px ;
-
-    
-    
-
 
 `
 
@@ -37,7 +22,7 @@ const homepage = (props) => {
     const [show,setshow] = useState('logins') ;
     const {statusPageLogin} = props ;
     const change_page_login = () =>{
-        console.log(statusPageLogin);
+
        let status = statusPageLogin
         props.dispatch({type : 'CHANGE_PAGE_LOGIN', payload: !status});
     }
@@ -46,9 +31,9 @@ const homepage = (props) => {
             {
                 statusPageLogin ? <LoginFrom /> : <RegisterForm /> 
             }
-             <div className='btn' onClick={change_page_login}>
-                    {statusPageLogin ? 'register' : 'logins'}
-                </div>
+            <spen className='btn' onClick={change_page_login}>
+                  {statusPageLogin ? 'register' : 'logins'}
+            </spen>
         </div>
 
 

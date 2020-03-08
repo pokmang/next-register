@@ -62,7 +62,7 @@ const LoginFrom = props => {
         if(user){
             alert('Login Success')
             props.dispatch({type : 'LOGIN' , payload: user });
-            Router.push('/manage')
+            Router.push('/Profile')
         }else{
             alert('Not found user')
         }
@@ -73,7 +73,7 @@ const LoginFrom = props => {
                 <h1>log in</h1>
                 <div class="form-group">
                     <label className="sr-only" for="exampleInputEmail3">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="User name" onChange={(e) => setfromData({...formData,email: e.target.value})}></input>
+                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" onChange={(e) => setfromData({...formData,email: e.target.value})}></input>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail3">Password</label>
