@@ -19,7 +19,7 @@ const StyledWrapper = styled.div `
 
 
 const homepage = (props) => {
-    const [show,setshow] = useState('logins') ;
+    
     const {statusPageLogin} = props ;
     const change_page_login = () =>{
 
