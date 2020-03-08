@@ -1,6 +1,5 @@
-
-import Login from '../src/components/Login'
-import User from '../src/components/User'
+import LoginFrom from '../src/components/Login'
+import RegisterForm from '../src/components/Register'
 import styled from "styled-components";
 import { useState } from 'react';
 import { connect } from "react-redux"
@@ -9,8 +8,11 @@ import Tapbar from '../src/components/Tapbar';
 
 
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div `
 
+.btn{
+    cursor: pointer;
+}
 .line{
     display: flex;
     justify-content: center;
@@ -32,42 +34,25 @@ const StyledWrapper = styled.div`
 
 
 const homepage = (props) => {
+    const [show,setshow] = useState('logins') ;
+    const {statusPageLogin} = props ;
+    const change_page_login = () =>{
+        console.log(statusPageLogin);
+       let status = statusPageLogin
+        props.dispatch({type : 'CHANGE_PAGE_LOGIN', payload: !status});
+    }
+    return(
+        <div >
+            {
+                statusPageLogin ? <LoginFrom /> : <RegisterForm /> 
+            }
+             <div className='btn' onClick={change_page_login}>
+                    {statusPageLogin ? 'register' : 'logins'}
+                </div>
+        </div>
 
-    
-    // const [newuser,setnewuser] = useState(userinfo)
-
-    // const handregister = (data) =>{
-
-    //     newuser.push(data);
-    //     setnewuser([...newuser])
-
-    // }
-
-    // const  [namelogin,setnamelogin] = useState()
-    // const  [passlogin,setpasslogin] = useState()
-
-    // const checklogin = (datalogin) =>{
-    
-    //     setnamelogin(datalogin.firsname) ;
-    //     setpasslogin (datalogin.pass) ;
-
-    // }
-
-    return (
-        <StyledWrapper>
-            
-            <div >
-                
-                <Tapbar />
-                <Login />    
-            </div>
-         
-                
-            
-             
-        </StyledWrapper>
 
     )
 }
 
-export default homepage;
+export default connect(state=>state.User)(homepage);

@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 
 
 const Mange =(props)=>{
-    console.log(props);
 
-    const {users} = props ;
 
   
     return( 

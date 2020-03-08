@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import Router from "next/router";
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -39,16 +41,26 @@ const StyledWrapper = styled.div`
 
 `
 
-const Tapbar = () =>{
+const Tapbar = (props) =>{
+
+    const { checkUser } = props;
+    console.log("Tapbar",checkUser)
+
+    const logout = () =>{
+        Router.push('/').then(()=>{
+            props.dispatch({type: 'LOGOUT'})
+        });
+    }
     return(
         <StyledWrapper>
-            <Link href='/'>
+        
+            
                 <div className='logo'>
                     <img src='/static/images/photo.jpg'  width='40'  height= '50'/>
-                    <h4>PK</h4>
+                    <h4>{checkUser ? `${checkUser.firstname} ${checkUser.lastname}` : ''}</h4>
                 </div>
             
-            </Link>
+           
             <div className='menu'>
             <Link href='/Profile'>
                 <div className='menu-item'>HOME</div>
@@ -56,9 +68,9 @@ const Tapbar = () =>{
             <Link href='/manage'>
                 <div className='menu-item'>Admin</div>
             </Link>
-            <Link href='./'>
-                <div className='menu-item'>Logout</div>
-            </Link>
+           
+                <div className='menu-item' onClick={logout}>Logout</div>
+       
 
             </div>
 
@@ -71,4 +83,4 @@ const Tapbar = () =>{
 
     )
 }
-export default Tapbar ;
+export default connect(state=> state.User)(Tapbar) ;
