@@ -1,9 +1,9 @@
 import LoginFrom from '../src/components/Login'
 import RegisterForm from '../src/components/Register'
 import styled from "styled-components";
-import { useState } from 'react';
-import { connect } from "react-redux"
-import Tapbar from '../src/components/Tapbar';
+import { connect } from "react-redux" ;
+import firebase from '../src/firebase' ;
+import { useEffect } from 'react';
 
 
 
@@ -19,7 +19,18 @@ const StyledWrapper = styled.div `
 
 
 const homepage = (props) => {
-    
+
+    useEffect(()=>{
+        firebase.firestore().collection('user').get().then(snapshot =>{
+            snapshot.forEach((res)=>{
+                console.log(res.data());
+                
+            })
+        })
+            console.log('test');
+            
+    },[])
+
     const {statusPageLogin} = props ;
     const change_page_login = () =>{
 
