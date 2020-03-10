@@ -4,21 +4,15 @@ import { useDispatch, connect } from "react-redux";
 import Router from "next/router";
 
 const StyledWrapper = styled.div`
-.regis{
-    
-    cursor: pointer;
-    &:hover{
-        color: hotpink;
-        background-color: #fff;
-        
-    }
-  }
-height: 500px;
-border:1px solid rgba(0,0,0,1);
-border-radius: 8px ;
-width: 300px ;
-margin : 30px;
-padding : 10px ;
+
+
+
+.form-group{
+    margin: 20px;
+    padding : 10px ;
+    height: 20px;
+    width: 300px;
+}
 h1{
     display: flex
     justify-content: center;
@@ -29,13 +23,12 @@ h1{
 
 `
 
-
 const Button = styled.button`
   border-radius: 8px;
   margin-top: 40px;-
   border: 2px solid #00ff11;
-  height: 50px;
-  width: 110px;
+  height: 40px;
+  width: 90px;
   margin : 13px;
   font-size: 18px;
   color: #fff;

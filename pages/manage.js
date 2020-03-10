@@ -8,7 +8,7 @@ import Admin from '../src/components/Update';
 
 const Mange =(props)=>{
 
-
+    const [selec]
   
     return( 
         <div>

@@ -22,13 +22,13 @@ const StyledWrapper = styled.div`
 const Users = (props) => {
 
     const { users } = props;
-    console.log("UUUUU", users)
+
 
     return (
         <StyledWrapper islogin={props.islogin}>
             {
                 users.map((user, index) => {
-console.log(index + ": ",user);
+
 
                     return (
 

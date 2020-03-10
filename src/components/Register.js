@@ -13,8 +13,6 @@ const StyledWrapper = styled.div`
     }
   }
 height: 500px;
-border:1px solid rgba(0,0,0,1);
-border-radius: 8px ;
 width: 300px ;
 margin : 30px;
 padding : 10px ;
