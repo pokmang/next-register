@@ -11,7 +11,8 @@ const userinfo = [
 const initialState = {
     users: userinfo,
     checkUser: null,
-    statusPageLogin : true
+    statusPageLogin : true ,
+
 
 }
 
@@ -21,7 +22,6 @@ export const UserReducer = (state = initialState, action) =>{
     switch(action.type){
     
         case 'CREATE_USER' :
-            
             return {
                 ...state,
                 users: [...state.users,action.payload]
@@ -41,7 +41,22 @@ export const UserReducer = (state = initialState, action) =>{
                 ...state,
                 statusPageLogin: action.payload
             }
-
+        case 'UPDATE_USER': 
+           return {
+               ...state,
+               users: state.users.map((user, index)=>{
+                   if(index === action.index){
+                       return action.data
+                   }
+                   return user
+               })
+           }
+        case 'DELETE_USER': 
+           return{
+               ...state,
+               users: state.users.filter((user,index)=> index !== action.index)
+           }
+        
         default: return state;
     }
 

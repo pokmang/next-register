@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { useState } from 'react'; 
+import { useState , useEffect } from 'react'; 
+import { useDispatch, useSelector } from 'react-redux'
+
+
 const StyledWrapper = styled.div`
 
 height: 500px;
@@ -14,9 +17,8 @@ padding : 10px ;
 
 `
 
-const Admin = (props) =>{
-    console.log(props);
-    
+const Admin = props =>{
+  
     const [formUpdate, setformUpdate] = useState({
         email: '',
         password: '',
@@ -24,12 +26,25 @@ const Admin = (props) =>{
         lastname: ''
     }) ;
 
-    const handleChangFile = e =>{
-        const reader = new FileReader();
-            
+    useEffect(()=>{
+        const { user } = props ;
+        if(props.user){
+            setformUpdate(formUpdate) ;
+        }
+        
+    }, [props.user])
+    
+    const update = () => {
+        const user = props.users.find(user => user.email === formUpdate.email);
+        if(user){
+            alert('Update Success')
+            props.dispatch({type : 'UPDATE_USER' , payload: user });
+        }else{
+            alert('Not found user')
+        }
+        
     }
-
-    console.log('tt',props.email);
+  
 
 
 
@@ -37,11 +52,11 @@ const Admin = (props) =>{
         <StyledWrapper>
         <div className='contener'>
         <h1>UPDATE</h1>
-        <p>First Name</p>   <input type="text" placeholder="Your firsname" onChange={e => setformUpdate({firstname: e.target.value})} ></input>
-        <p>Last Name</p>    <input type="text" placeholder="Your lastname" onChange={e => setformUpdate({lastname: e.target.value})} ></input>
-        <p>E-mail</p>       <input type="text" placeholder="Your e-mail" onChange={e => setformUpdate({email: e.target.value})} ></input>
-        <p>Password</p>     <input type="password" placeholder="Your password" onChange={e => setformUpdate({password: e.target.value})} ></input>
-        <button>Update</button>
+        <p>E-mail</p>       <input type="text" placeholder="Your e-mail" onChange={e => setformUpdate({email: e.target.value})} value ={formUpdate.email}></input>
+        <p>First Name</p>   <input type="text" placeholder="Your firsname" onChange={e => setformUpdate({firstname: e.target.value})} value ={formUpdate.firstname}></input>
+        <p>Last Name</p>    <input type="text" placeholder="Your lastname" onChange={e => setformUpdate({lastname: e.target.value})} value ={formUpdate.lastname}></input>
+        <p>Password</p>     <input type="password" placeholder="Your password" onChange={e => setformUpdate({password: e.target.value})} value ={formUpdate.password}></input>
+        <button onClick={update}>Update</button>
 
 
     </div>
