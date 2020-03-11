@@ -50,11 +50,12 @@ const LoginFrom = props => {
         password: ''
     })
 
-    const logins = () => {
+    const logins = async() => {
         const user = props.users.find(user => user.email === formData.email && user.password === formData.password);
         if(user){
             alert('Login Success')
-            props.dispatch({type : 'LOGIN' , payload: user });
+            await props.dispatch({type : 'LOGIN' , payload: user });
+            
             Router.push('/Profile')
         }else{
             alert('Not found user')

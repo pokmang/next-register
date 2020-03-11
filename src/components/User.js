@@ -1,65 +1,76 @@
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+import { useDispatch, useSelector } from 'react-redux'
 const StyledWrapper = styled.div`
-    max-width: 180px;
-    boder0radius: 8px;
-    box-shadow : 0 0 6px 0 rgab(0,0,0,.15);
-    overflow: hidden;
-    marjin-bottom: 10 px;
-    ${props => props.selected && `
-    box-shadow : 0 0 6px 0 rgab(0,0,255,.50); 
-    `}
-    .action-button{
+
+
+    ${props => props.islogin && `
+      border:1px solid rgba(255,0,0,1);
+    `}     
+    .user{
+        border:1px solid rgba(0,0,0,1);
+        border-radius: 8px ;
+        width: 200px ;
+        padding : 10px ;
+        margin : 15px;
+    }
+    .bearcard-actions > div {
+        flex: 1;
+        padding: 4px;
         text-align: center;
-        color: blue;
+        font-size: 20px;
         cursor: pointer;
-        padding: 8px;
-        &:hover{
-            bacground-color: rgba(0,0,0,.15)
-        }
+        transition: background-color .2s ease-in;
     }
-    .action-button-container{
-        display:flex;
-
-    }
-    .img{
-        height: 70px;
-        width: 81px;
-    }
-    .content {
-        padding: 10px 10px 0 10px;
-        h4, p{
-            margin: 0;
-        }
-    }
-
+    
+    
+   
 
 `
 
-const Users = props => {
-    
-    console.log("props",props);
-    
-    
-    const { selected ,handleClick, handleUpdate, handleDelete } = props;
-    const { imageUrl,firstname,lastname,email } = props.user;
+const Users = (props) => {
+    const dispatch = useDispatch();
+    const form = useSelector(state => state.form)
+    const { users ,checkUser } = props;
+
+    if(checkUser === null){
+        return(
+            <div>login frist</div>
+        )
+    }
+    const deleteUser =  (email) => {
+        dispatch({ type: 'DELETE_USER', email    })
+    }
     return (
-        <StyledWrapper onClick ={handleClick} selected= {selected}>
-            <img src={imageUrl}  />
-            <div className='content'>
-                <p>{firstname}</p>
-                <p>{lastname}</p>
-                <p>{email}</p>
-            </div>
+        <StyledWrapper islogin={props.islogin}>
             {
-                (handleDelete && handleUpdate) && (
-                    <div className = "action-button-container">
-                        <div className = "action-button">Update</div>
-                        <div className = "action-button">Delete</div>
-                    </div>
+                users.map((user, index) => {
+                    if(user.email === checkUser.email) return  
+
+                    return (
+
+                        <div className='user'>
+                            <img src={user.imageUrl} width='50%' height='50%' />
+                            <p> {user.firstname} </p>
+                            <p>{user.lastname}</p>
+                            <p>{user.email}</p>
+                            <hr color ="color=660066"/>
+                            { checkUser.role === 1 &&(
+                                     <div className='bearcard-actions'>
+                                     <div onClick={()=>deleteUser(user.email)}>Delete</div>
+                                 </div>
+                            )}
+                           
+
+                        </div>
+                    )
+                }
                 )
+
             }
+
+
+
         </StyledWrapper>
 
 
@@ -70,4 +81,4 @@ const Users = props => {
 
 }
 
-export default (Users);
+export default connect(state => state.User)(Users);

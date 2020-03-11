@@ -1,5 +1,5 @@
 import Tapbar from "../src/components/Tapbar"
-import Userlist from "../src/components/Userlist";
+import User from "../src/components/User";
 
 
 
@@ -8,7 +8,7 @@ const Profile =() =>{
      
              <div>
                  <Tapbar/>
-                 <Userlist />
+                 <User />
                     
                  
              </div>

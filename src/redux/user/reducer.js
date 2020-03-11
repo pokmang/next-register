@@ -1,11 +1,31 @@
 const userinfo = [
     {
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlZdpbK9Vj39UQbfibrytDSsEKyleVDDF3AG2vELVt7lcSImgo',
-    firstname: 'root',
-    lastname: 'root',
-    email: 'root@gmail.com'
-    }
+    firstname: 'admin',
+    lastname: 'admin',
+    email: 'admin',
+    password: 'admin',
+    role : 1
+    },
+    {
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlZdpbK9Vj39UQbfibrytDSsEKyleVDDF3AG2vELVt7lcSImgo',
+        firstname: '1',
+        lastname: '1',
+        email: '1@gmail.com',
+        password: '1',
+        role : 0
+        },
+        {
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlZdpbK9Vj39UQbfibrytDSsEKyleVDDF3AG2vELVt7lcSImgo',
+            firstname: '2',
+            lastname: '2',
+            email: '2@gmail.com',
+            password: '2',
+            role : 0
+            },
+    
  ]
+
 
 
 const initialState = {
@@ -44,17 +64,20 @@ export const UserReducer = (state = initialState, action) =>{
         case 'UPDATE_USER': 
            return {
                ...state,
-               users: state.users.map((user, index)=>{
-                   if(index === action.index){
-                       return action.data
+               users: state.users.map((user)=>{
+                   if(user.email === action.payload.email){
+                       return {...action.payload  , imageUrl : user.imageUrl , role : user.role}
+                      
                    }
                    return user
                })
            }
         case 'DELETE_USER': 
+        console.log(action   );
+        
            return{
                ...state,
-               users: state.users.filter((user,index)=> index !== action.index)
+               users: state.users.filter((user,index)=> user.email !== action.email )
            }
         
         default: return state;

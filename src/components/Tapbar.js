@@ -45,7 +45,10 @@ const Tapbar = (props) =>{
 
     const { checkUser } = props;
     console.log("Tapbar",checkUser)
-
+    if(checkUser === null){
+        return(
+<></>        )
+    }
     const logout = () =>{
         Router.push('/').then(()=>{
             props.dispatch({type: 'LOGOUT'})
@@ -65,9 +68,14 @@ const Tapbar = (props) =>{
             <Link href='/Profile'>
                 <div className='menu-item'>HOME</div>
             </Link>
-            <Link href='/manage'>
-                <div className='menu-item'>Admin</div>
-            </Link>
+            {
+                checkUser.role === 1 && (
+                    <Link href='/manage'>
+                    <div className='menu-item'>Admin</div>
+                </Link>
+                )
+            }
+           
            
                 <div className='menu-item' onClick={logout}>Logout</div>
        
