@@ -1,6 +1,7 @@
 import { connect } from 'react-redux' ;
 import { useState } from 'react' ;
 import styled from "styled-components"
+import { addUser } from '../services/users';
 
 const StyledWrapper = styled.div`
 .regis{
@@ -63,11 +64,14 @@ const RegisterForm = (props) => {
             reader.readAsDataURL(e.target.files[0])
     }
 
-    const createUser = () =>{
+    const createUser = async () =>{
         let status = statusPageLogin
         
         props.dispatch({type: 'CREATE_USER',payload: {...formData,imageUrl}})
         props.dispatch({type : 'CHANGE_PAGE_LOGIN', payload: !status});
+        const x = await addUser({...formData, imageUrl: '1234'})
+        console.log("ff",x);
+        
         
     } 
 

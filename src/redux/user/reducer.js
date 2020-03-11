@@ -64,7 +64,7 @@ export const UserReducer = (state = initialState, action) =>{
         case 'UPDATE_USER': 
            return {
                ...state,
-               users: state.users.map((user)=>{
+               users: state.users.map((user,index)=>{
                    if(user.email === action.payload.email){
                        return {...action.payload  , imageUrl : user.imageUrl , role : user.role}
                       
